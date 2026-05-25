@@ -7,7 +7,7 @@
         <h2 class="font-display text-xl font-bold text-navy">Manajemen Produk</h2>
         <p class="text-sm text-gray-500 mt-0.5">{{ $products->total() }} produk</p>
     </div>
-    <a href="{{ route('admin.products.create') }}" class="bg-navy text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-[#12301f] transition-colors flex items-center gap-2 whitespace-nowrap shadow-sm">
+    <a href="{{ route('admin.products.create') }}" class="bg-navy text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-[#2d4a6b] transition-colors flex items-center gap-2 whitespace-nowrap shadow-sm">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
         Tambah Produk
     </a>

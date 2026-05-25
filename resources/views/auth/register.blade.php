@@ -4,7 +4,7 @@
 @section('content')
 <div class="p-8">
     <div class="text-center mb-7">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" class="icon-bg-navy">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 icon-bg-navy">
             <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
         </div>
         <h1 class="font-display text-2xl font-bold text-navy">Buat Akun</h1>

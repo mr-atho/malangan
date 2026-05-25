@@ -4,7 +4,7 @@
 @section('content')
 <div class="p-8">
     <div class="text-center mb-6">
-        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" class="icon-bg-navy">
+        <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 icon-bg-navy">
             <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
         <h1 class="font-display text-2xl font-bold text-navy">Cek Email Anda</h1>

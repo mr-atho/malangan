@@ -8,14 +8,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #3B5F8A;
+            --gold: #D4956A;
+            --gold-dk: #C07A50;
+            --cream: #F6F8FB;
+        }
         body { font-family: 'Inter', sans-serif; color: #191919; }
         .font-display { font-family: 'Playfair Display', serif; }
-        .bg-navy { background-color: #1B4332; }
-        .text-gold { color: #D4C5A9; }
-        .bg-gold { background-color: #D4C5A9; }
+        .bg-navy { background-color: #3B5F8A; }
+        .text-navy { color: #3B5F8A; }
+        .text-gold { color: #D4956A; }
+        .bg-gold { background-color: #D4956A; }
         .sidebar-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.7); transition: all 0.15s; }
         .sidebar-link:hover, .sidebar-link.active { background-color: rgba(255,255,255,0.13); color: white; }
-        .sidebar-link.active { color: #D4C5A9; }
+        .sidebar-link.active { color: #D4956A; }
         [x-cloak] { display: none !important; }
     </style>
 </head>

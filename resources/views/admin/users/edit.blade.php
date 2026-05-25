@@ -88,7 +88,7 @@
             </div>
 
             <div class="flex gap-3 pt-2">
-                <button type="submit" class="px-6 py-2.5 bg-navy text-white text-sm font-semibold rounded-xl hover:bg-[#12301f] transition-colors">
+                <button type="submit" class="px-6 py-2.5 bg-navy text-white text-sm font-semibold rounded-xl hover:bg-[#2d4a6b] transition-colors">
                     Simpan Perubahan
                 </button>
                 <a href="{{ route('admin.users.show', $user) }}"

@@ -5,7 +5,7 @@
 <div class="max-w-3xl">
     <div class="flex items-center justify-between mb-6">
         <a href="{{ route('admin.users.index') }}" class="text-sm text-gray-500 hover:text-navy inline-flex items-center gap-1">← Kembali ke pengguna</a>
-        <a href="{{ route('admin.users.edit', $user) }}" class="text-sm px-4 py-2 bg-navy text-white rounded-xl font-medium hover:bg-[#12301f] transition-colors">Edit Pengguna</a>
+        <a href="{{ route('admin.users.edit', $user) }}" class="text-sm px-4 py-2 bg-navy text-white rounded-xl font-medium hover:bg-[#2d4a6b] transition-colors">Edit Pengguna</a>
     </div>
 
     <div class="space-y-5 mt-4">

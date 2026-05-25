@@ -91,7 +91,7 @@
                                     class="px-3 py-2.5 text-gray-400 hover:bg-gray-100 hover:text-navy transition-colors font-bold text-lg leading-none select-none">+</button>
                         </div>
                         <button type="submit"
-                                class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-navy text-white text-xs font-semibold rounded-xl hover:bg-[#12301f] transition-colors shadow-sm whitespace-nowrap">
+                                class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-navy text-white text-xs font-semibold rounded-xl hover:bg-[#2d4a6b] transition-colors shadow-sm whitespace-nowrap">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                             Simpan
                         </button>
