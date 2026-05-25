@@ -12,14 +12,15 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                sans: ['Plus Jakarta Sans', 'Inter', ...defaultTheme.fontFamily.sans],
                 display: ['Playfair Display', ...defaultTheme.fontFamily.serif],
             },
             colors: {
-                navy: '#1B4332',
-                gold: '#D4C5A9',
-                'cod-gray': '#0D1F18',
-                'spicy-pink': '#6B8F71',
+                navy: '#09090B', // Obsidian Charcoal
+                gold: '#C5A880', // Champagne Gold
+                'cod-gray': '#18181B', // Zinc-900
+                'spicy-pink': '#B0936B', // Muted Dark Gold
+                'cream': '#FAF9F6', // Ivory White
             },
         },
     },

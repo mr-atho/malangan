@@ -32,34 +32,34 @@
             <div class="md:col-span-2 space-y-5">
 
                 {{-- Metode Pengiriman --}}
-                <x-card>
+                <x-card class="rounded-2xl border border-zinc-100 p-6">
                     <h2 class="font-display text-lg font-bold text-navy mb-5">🚚 Metode Pengiriman</h2>
-                    <div class="space-y-3">
-                        <label class="flex items-start gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="shippingType === 'pickup' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="shipping_type" value="pickup" x-model="shippingType" class="accent-navy mt-0.5">
+                    <div class="space-y-3.5">
+                        <label class="flex items-start gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="shippingType === 'pickup' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="shipping_type" value="pickup" x-model="shippingType" class="accent-gold mt-1">
                             <div class="flex-1">
-                                <p class="font-semibold text-sm text-gray-800">🏪 Ambil di Toko</p>
-                                <p class="text-xs text-gray-500 mt-0.5">Ambil langsung ke toko kami di Malang — <span class="font-semibold text-emerald-600">Gratis ongkir</span></p>
-                                <p class="text-xs text-gray-400 mt-1">Jl. Contoh No. 12, Kota Malang (dikonfirmasi setelah pesan)</p>
+                                <p class="font-semibold text-sm text-zinc-900">🏪 Ambil di Toko</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">Ambil langsung ke toko kami di Malang — <span class="font-semibold text-emerald-600">Gratis ongkir</span></p>
+                                <p class="text-xs text-zinc-400 mt-1">Jl. Contoh No. 12, Kota Malang (dikonfirmasi setelah pesan)</p>
                             </div>
                         </label>
-                        <label class="flex items-start gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="shippingType === 'local' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="shipping_type" value="local" x-model="shippingType" class="accent-navy mt-0.5">
+                        <label class="flex items-start gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="shippingType === 'local' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="shipping_type" value="local" x-model="shippingType" class="accent-gold mt-1">
                             <div class="flex-1">
-                                <p class="font-semibold text-sm text-gray-800">📍 Pengiriman Dalam Kota Malang</p>
-                                <p class="text-xs text-gray-500 mt-0.5">Malang Kota & Kabupaten — <span class="font-semibold text-navy">Flat Rp 15.000</span></p>
-                                <p class="text-xs text-gray-400 mt-1">Pengiriman 1–2 hari, dikemas aman untuk barang pecah belah</p>
+                                <p class="font-semibold text-sm text-zinc-900">📍 Pengiriman Dalam Kota Malang</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">Malang Kota & Kabupaten — <span class="font-semibold text-navy">Flat Rp 15.000</span></p>
+                                <p class="text-xs text-zinc-400 mt-1">Pengiriman 1–2 hari, dikemas aman untuk barang pecah belah</p>
                             </div>
                         </label>
-                        <label class="flex items-start gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="shippingType === 'outside' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="shipping_type" value="outside" x-model="shippingType" class="accent-navy mt-0.5">
+                        <label class="flex items-start gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="shippingType === 'outside' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="shipping_type" value="outside" x-model="shippingType" class="accent-gold mt-1">
                             <div class="flex-1">
-                                <p class="font-semibold text-sm text-gray-800">🚛 Pengiriman Luar Kota</p>
-                                <p class="text-xs text-gray-500 mt-0.5">Ke seluruh Indonesia — <span class="font-semibold text-amber-600">Ongkir dikonfirmasi admin</span></p>
-                                <p class="text-xs text-gray-400 mt-1">Admin menghubungi via WhatsApp untuk konfirmasi ongkir & kurir</p>
+                                <p class="font-semibold text-sm text-zinc-900">🚛 Pengiriman Luar Kota</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">Ke seluruh Indonesia — <span class="font-semibold text-amber-600">Ongkir dikonfirmasi admin</span></p>
+                                <p class="text-xs text-zinc-400 mt-1">Admin menghubungi via WhatsApp untuk konfirmasi ongkir & kurir</p>
                             </div>
                         </label>
                     </div>
@@ -76,19 +76,19 @@
                 </x-card>
 
                 {{-- Info Kontak (selalu tampil) --}}
-                <x-card>
+                <x-card class="rounded-2xl border border-zinc-100 p-6">
                     <h2 class="font-display text-lg font-bold text-navy mb-5">👤 Informasi Kontak</h2>
-                    <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="grid sm:grid-cols-2 gap-4.5">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Nama *</label>
+                            <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">Nama *</label>
                             <input type="text" name="shipping_name" value="{{ old('shipping_name', auth()->user()->name) }}" required
-                                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 @error('shipping_name') border-red-300 @enderror">
+                                class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors @error('shipping_name') border-red-300 @enderror">
                             @error('shipping_name')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Nomor HP *</label>
+                            <label class="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1.5">Nomor HP *</label>
                             <input type="text" name="shipping_phone" value="{{ old('shipping_phone', auth()->user()->phone) }}" required
-                                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 @error('shipping_phone') border-red-300 @enderror">
+                                class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors @error('shipping_phone') border-red-300 @enderror">
                             @error('shipping_phone')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                         </div>
                     </div>
@@ -96,34 +96,34 @@
 
                 {{-- Alamat Pengiriman (hanya jika bukan ambil di toko) --}}
                 <div x-show="shippingType !== 'pickup'" x-transition>
-                    <x-card>
+                    <x-card class="rounded-2xl border border-zinc-100 p-6">
                         <h2 class="font-display text-lg font-bold text-navy mb-5">📦 Alamat Pengiriman</h2>
-                        <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="grid sm:grid-cols-2 gap-4.5">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Kota *</label>
+                                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">Kota *</label>
                                 <input type="text" name="shipping_city" value="{{ old('shipping_city') }}"
                                     placeholder="Contoh: Malang"
-                                    class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20">
+                                    class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors">
                                 @error('shipping_city')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Provinsi *</label>
+                                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">Provinsi *</label>
                                 <input type="text" name="shipping_province" value="{{ old('shipping_province', 'Jawa Timur') }}"
-                                    class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20">
+                                    class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors">
                                 @error('shipping_province')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Kode Pos *</label>
+                                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">Kode Pos *</label>
                                 <input type="text" name="shipping_postal_code" value="{{ old('shipping_postal_code') }}"
                                     placeholder="65111"
-                                    class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20">
+                                    class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors">
                                 @error('shipping_postal_code')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                             <div class="sm:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1.5">Alamat Lengkap *</label>
+                                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1.5">Alamat Lengkap *</label>
                                 <textarea name="shipping_address" rows="3"
                                     placeholder="Jl. ..., RT/RW, Kelurahan, Kecamatan"
-                                    class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 resize-none">{{ old('shipping_address', auth()->user()->address) }}</textarea>
+                                    class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors resize-none">{{ old('shipping_address', auth()->user()->address) }}</textarea>
                                 @error('shipping_address')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
                         </div>
@@ -131,41 +131,41 @@
                 </div>
 
                 {{-- Metode Pembayaran --}}
-                <x-card>
+                <x-card class="rounded-2xl border border-zinc-100 p-6">
                     <h2 class="font-display text-lg font-bold text-navy mb-5">💳 Metode Pembayaran</h2>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="paymentMethod === 'transfer' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="payment_method" value="transfer" x-model="paymentMethod" class="accent-navy">
+                    <div class="space-y-3.5">
+                        <label class="flex items-center gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="paymentMethod === 'transfer' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="payment_method" value="transfer" x-model="paymentMethod" class="accent-gold">
                             <div>
-                                <p class="font-semibold text-sm text-gray-800">🏦 Transfer Bank</p>
-                                <p class="text-xs text-gray-500">BCA / BNI / Mandiri — konfirmasi via WhatsApp</p>
+                                <p class="font-semibold text-sm text-zinc-900">🏦 Transfer Bank</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">BCA / BNI / Mandiri — konfirmasi via WhatsApp</p>
                             </div>
                         </label>
-                        <label x-show="shippingType !== 'pickup'" class="flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="paymentMethod === 'cod' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="payment_method" value="cod" x-model="paymentMethod" class="accent-navy">
+                        <label x-show="shippingType !== 'pickup'" class="flex items-center gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="paymentMethod === 'cod' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="payment_method" value="cod" x-model="paymentMethod" class="accent-gold">
                             <div>
-                                <p class="font-semibold text-sm text-gray-800">💵 COD (Bayar di Tempat)</p>
-                                <p class="text-xs text-gray-500">Bayar tunai saat paket tiba</p>
+                                <p class="font-semibold text-sm text-zinc-900">💵 COD (Bayar di Tempat)</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">Bayar tunai saat paket tiba</p>
                             </div>
                         </label>
-                        <label x-show="shippingType === 'pickup'" class="flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-colors"
-                            :class="paymentMethod === 'store' ? 'border-navy bg-navy/5' : 'border-gray-200 hover:border-gray-300'">
-                            <input type="radio" name="payment_method" value="store" x-model="paymentMethod" class="accent-navy">
+                        <label x-show="shippingType === 'pickup'" class="flex items-center gap-4 p-4.5 border rounded-2xl cursor-pointer transition-all"
+                            :class="paymentMethod === 'store' ? 'border-gold bg-gold/5 shadow-[0_4px_15px_rgba(197,168,128,0.05)]' : 'border-zinc-200 hover:border-zinc-300 bg-white'">
+                            <input type="radio" name="payment_method" value="store" x-model="paymentMethod" class="accent-gold">
                             <div>
-                                <p class="font-semibold text-sm text-gray-800">🏪 Bayar di Toko</p>
-                                <p class="text-xs text-gray-500">Bayar langsung saat mengambil pesanan di toko</p>
+                                <p class="font-semibold text-sm text-zinc-900">🏪 Bayar di Toko</p>
+                                <p class="text-xs text-zinc-500 mt-0.5">Bayar langsung saat mengambil pesanan di toko</p>
                             </div>
                         </label>
                     </div>
                 </x-card>
 
                 {{-- Catatan --}}
-                <x-card>
-                    <label class="block text-sm font-medium text-gray-700 mb-1.5">📝 Catatan (opsional)</label>
+                <x-card class="rounded-2xl border border-zinc-100 p-6">
+                    <label class="block text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-1.5">📝 Catatan (opsional)</label>
                     <input type="text" name="notes" value="{{ old('notes') }}" placeholder="Catatan khusus untuk penjual..."
-                        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20">
+                        class="w-full border-b border-t-0 border-l-0 border-r-0 border-zinc-200 rounded-none px-0 py-2 text-sm focus:outline-none focus:border-gold focus:ring-0 bg-transparent transition-colors">
                 </x-card>
 
             </div>

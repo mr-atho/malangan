@@ -2,7 +2,7 @@
 <div class="flex items-end {{ $align === 'center' ? 'flex-col text-center' : 'justify-between' }} mb-10">
     <div class="{{ $align === 'center' ? '' : '' }}">
         @if($subtitle)
-            <p class="text-spicy-pink text-sm font-semibold uppercase tracking-widest mb-2">{{ $subtitle }}</p>
+            <p class="text-[10px] font-bold tracking-widest uppercase text-gold mb-2">{{ $subtitle }}</p>
         @endif
         <h2 class="font-display text-3xl md:text-4xl font-bold text-navy">{{ $title }}</h2>
     </div>

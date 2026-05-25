@@ -24,27 +24,27 @@
                         <p class="text-xs text-gray-400 mt-0.5">{{ $item->product->category->name }}</p>
                         <p class="text-sm font-bold text-navy mt-1">Rp {{ number_format($item->price, 0, ',', '.') }}</p>
                     </div>
-                    <div class="flex flex-col items-end justify-between flex-shrink-0">
+                    <div class="flex flex-col items-end justify-between flex-shrink-0 gap-3">
                         <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                             @csrf @method('DELETE')
-                            <button class="text-gray-300 hover:text-red-400 transition-colors">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            <button class="text-zinc-300 hover:text-red-500 transition-colors p-1.5 rounded-full hover:bg-zinc-50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                             </button>
                         </form>
                         {{-- Quantity control: 3 form terpisah, tanpa JS --}}
-                        <div class="flex items-center border-2 border-gray-200 rounded-xl overflow-hidden">
+                        <div class="flex items-center border border-zinc-200 rounded-full overflow-hidden bg-white shadow-sm">
                             <form action="{{ route('cart.decrement', $item->id) }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-red-500 font-bold text-xl transition-colors">−</button>
+                                    class="w-9 h-9 flex items-center justify-center text-zinc-500 hover:bg-zinc-50 hover:text-red-500 font-semibold text-lg transition-colors">−</button>
                             </form>
 
-                            <span class="w-12 h-10 flex items-center justify-center font-bold text-base border-x-2 border-gray-200 text-navy">{{ $item->quantity }}</span>
+                            <span class="w-10 h-9 flex items-center justify-center font-bold text-sm border-x border-zinc-200 text-navy">{{ $item->quantity }}</span>
 
                             <form action="{{ route('cart.increment', $item->id) }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-green-600 font-bold text-xl transition-colors">+</button>
+                                    class="w-9 h-9 flex items-center justify-center text-zinc-500 hover:bg-zinc-50 hover:text-green-600 font-semibold text-lg transition-colors">+</button>
                             </form>
                         </div>
                         <p class="text-sm font-bold text-navy">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</p>
@@ -55,25 +55,25 @@
 
             {{-- Order Summary --}}
             <div class="lg:col-span-1">
-                <x-card class="sticky top-24">
-                    <h3 class="font-display text-lg font-bold text-navy mb-5">Ringkasan Pesanan</h3>
-                    <div class="space-y-3 text-sm">
+                <x-card class="sticky top-24 border border-zinc-100/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] rounded-2xl p-6 bg-white">
+                    <h3 class="font-display text-lg font-bold text-zinc-900 mb-5 tracking-wide">Ringkasan Pesanan</h3>
+                    <div class="space-y-3.5 text-xs">
                         @foreach($cart->items as $item)
-                        <div class="flex justify-between text-gray-600">
-                            <span class="truncate max-w-32">{{ $item->product->name }} ×{{ $item->quantity }}</span>
-                            <span class="font-medium flex-shrink-0 ml-2">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</span>
+                        <div class="flex justify-between text-zinc-500">
+                            <span class="truncate max-w-[140px]">{{ $item->product->name }} <span class="font-semibold text-zinc-400">×{{ $item->quantity }}</span></span>
+                            <span class="font-semibold flex-shrink-0 ml-2 text-zinc-700">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</span>
                         </div>
                         @endforeach
                     </div>
-                    <div class="border-t border-gray-100 mt-4 pt-4">
-                        <div class="flex justify-between font-bold text-navy">
+                    <div class="border-t border-zinc-100 mt-4.5 pt-4">
+                        <div class="flex justify-between font-bold text-zinc-900 text-sm">
                             <span>Subtotal</span>
                             <span>Rp {{ number_format($cart->total, 0, ',', '.') }}</span>
                         </div>
-                        <p class="text-xs text-gray-400 mt-1">Belum termasuk ongkos kirim</p>
+                        <p class="text-[10px] text-zinc-400 mt-1">Belum termasuk ongkos kirim (dikalkulasi saat checkout).</p>
                     </div>
-                    <a href="{{ route('checkout.index') }}" class="btn-primary w-full text-center block mt-5 text-sm py-3">Lanjut ke Checkout</a>
-                    <a href="{{ route('products.index') }}" class="block text-center text-sm text-navy hover:text-gold mt-3 font-medium">← Lanjut Belanja</a>
+                    <a href="{{ route('checkout.index') }}" class="btn-primary w-full text-center block mt-6 text-xs py-3.5 shadow-sm hover:shadow-md uppercase tracking-wider font-bold">Lanjut ke Checkout</a>
+                    <a href="{{ route('products.index') }}" class="block text-center text-xs text-zinc-400 hover:text-gold mt-4 font-semibold uppercase tracking-wider">← Lanjut Belanja</a>
                 </x-card>
             </div>
         </div>

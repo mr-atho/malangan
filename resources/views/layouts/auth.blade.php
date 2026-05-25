@@ -6,19 +6,19 @@
     <title>@yield('title', 'Autentikasi') – malangan.com</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; color: #0D1F18; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #09090B; }
         .font-display { font-family: 'Playfair Display', serif; }
-        .bg-navy  { background-color: #1B4332; }
-        .text-navy { color: #1B4332; }
-        .text-gold { color: #D4C5A9; }
-        .bg-gold  { background-color: #D4C5A9; }
-        .border-navy { border-color: #1B4332; }
+        .bg-navy  { background-color: #09090B; }
+        .text-navy { color: #09090B; }
+        .text-gold { color: #C5A880; }
+        .bg-gold  { background-color: #C5A880; }
+        .border-navy { border-color: #09090B; }
         [x-cloak] { display:none !important; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4" style="background-color:#e8ede9;">
+<body class="min-h-screen flex items-center justify-center p-4" style="background-color:#FAF9F6;">
 
 <div class="w-full max-w-md">
 
