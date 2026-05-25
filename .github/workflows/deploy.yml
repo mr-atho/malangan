@@ -41,7 +41,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USERNAME }}
           REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          TARGET: ${{ secrets.SSH_REMOTE_PATH }}
+          TARGET: ${{ secrets.SSH_REMOTE_PATH }}/
           EXCLUDE: ".git/, .env, storage/app/public/, node_modules/"
 
       # Clear Laravel caches so perubahan langsung live
