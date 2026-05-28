@@ -15,14 +15,6 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction
-
       - name: Sync files to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -31,8 +23,10 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /
+          security: loose
           exclude: |
             **/.env
+            **/vendor/**
             **/node_modules/**
             **/storage/framework/cache/**
             **/storage/framework/sessions/**
@@ -49,6 +43,12 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_REMOTE_PATH }}
-            php artisan migrate --force
-            php artisan optimize:clear
-            php artisan optimize
+            PHP=$(find /usr/local/php* /usr/bin -name "php*" -type f 2>/dev/null | grep -E "php8[0-9.]*(bin/php|php)$" | head -1)
+            [ -z "$PHP" ] && PHP=$(which php)
+            echo "Using PHP: $PHP"
+            $PHP -v
+            COMPOSER=$(which composer 2>/dev/null || echo "/usr/local/bin/composer")
+            $PHP $COMPOSER install --no-dev --optimize-autoloader --no-interaction
+            $PHP artisan migrate --force
+            $PHP artisan optimize:clear
+            $PHP artisan optimize
