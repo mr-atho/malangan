@@ -1,21 +1,22 @@
-name: Deploy to Hostinger
+name: Deploy Malangan
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
+    name: Deploy to Hostinger
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Get latest code
         uses: actions/checkout@v4
 
-      # Upload semua file via FTP
-      - name: Deploy files via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Sync files to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -23,22 +24,25 @@ jobs:
           local-dir: ./
           server-dir: /
           exclude: |
-            **/.git*
-            **/.git*/**
+            **/.env
+            **/vendor/**
             **/node_modules/**
-            .env
+            **/storage/framework/cache/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            .git*
+          state-name: .ftp-deploy-sync-state.json
 
-      # Clear Laravel cache via SSH agar perubahan langsung live
-      - name: Clear Laravel cache via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Post-deploy commands via SSH
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_REMOTE_PATH }}
-            php8.2 artisan config:clear
-            php8.2 artisan view:clear
-            php8.2 artisan cache:clear
-            php8.2 artisan route:clear
+            composer install --no-dev --optimize-autoloader
+            php8.2 artisan migrate --force
+            php8.2 artisan optimize:clear
+            php8.2 artisan optimize
