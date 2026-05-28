@@ -38,7 +38,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_REMOTE_PATH }}
-            php artisan config:clear
-            php artisan view:clear
-            php artisan cache:clear
-            php artisan route:clear
+            php8.2 artisan config:clear
+            php8.2 artisan view:clear
+            php8.2 artisan cache:clear
+            php8.2 artisan route:clear
