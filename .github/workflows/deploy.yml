@@ -14,8 +14,45 @@ jobs:
     steps:
       - name: Get latest code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      - name: Sync files to Hostinger via FTP
+      # Cek apakah composer.lock berubah di commit ini
+      - name: Check if composer.lock changed
+        id: composer_changed
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q "composer.lock"; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Install vendor hanya kalau composer.lock berubah
+      - name: Setup PHP
+        if: steps.composer_changed.outputs.changed == 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install Composer dependencies
+        if: steps.composer_changed.outputs.changed == 'true'
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      # Upload vendor (hanya kalau composer.lock berubah)
+      - name: Sync vendor via FTP
+        if: steps.composer_changed.outputs.changed == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./vendor/
+          server-dir: /vendor/
+          security: loose
+          state-name: .ftp-deploy-sync-state-vendor.json
+
+      # Upload file aplikasi (selalu, tapi exclude vendor & node_modules)
+      - name: Sync app files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -34,7 +71,8 @@ jobs:
             .git*
           state-name: .ftp-deploy-sync-state.json
 
-      - name: Post-deploy commands via SSH
+      # Clear cache di server
+      - name: Clear Laravel cache via SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -43,12 +81,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_REMOTE_PATH }}
-            PHP=$(find /usr/local/php* /usr/bin -name "php*" -type f 2>/dev/null | grep -E "php8[0-9.]*(bin/php|php)$" | head -1)
-            [ -z "$PHP" ] && PHP=$(which php)
-            echo "Using PHP: $PHP"
-            $PHP -v
-            COMPOSER=$(which composer 2>/dev/null || echo "/usr/local/bin/composer")
-            $PHP $COMPOSER install --no-dev --optimize-autoloader --no-interaction
-            $PHP artisan migrate --force
-            $PHP artisan optimize:clear
-            $PHP artisan optimize
+            php artisan optimize:clear
+            php artisan optimize
