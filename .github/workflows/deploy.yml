@@ -66,19 +66,3 @@ jobs:
             **/storage/framework/views/**
             .git*
           state-name: .ftp-deploy-sync-state.json
-
-      - name: Clear Laravel cache via SSH
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd ${{ secrets.SSH_REMOTE_PATH }}
-            PHP=$(find /usr/local/php*/bin -name "php" -type f 2>/dev/null | sort -rV | head -1)
-            [ -z "$PHP" ] && PHP=$(which php8.2 2>/dev/null || which php81 2>/dev/null || which php 2>/dev/null)
-            echo "PHP binary: $PHP"
-            $PHP -v
-            $PHP artisan optimize:clear
-            $PHP artisan optimize
