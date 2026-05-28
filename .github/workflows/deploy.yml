@@ -15,6 +15,14 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
       - name: Sync files to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -25,7 +33,6 @@ jobs:
           server-dir: /
           exclude: |
             **/.env
-            **/vendor/**
             **/node_modules/**
             **/storage/framework/cache/**
             **/storage/framework/sessions/**
@@ -42,7 +49,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.SSH_REMOTE_PATH }}
-            composer install --no-dev --optimize-autoloader
-            php8.2 artisan migrate --force
-            php8.2 artisan optimize:clear
-            php8.2 artisan optimize
+            php artisan migrate --force
+            php artisan optimize:clear
+            php artisan optimize
