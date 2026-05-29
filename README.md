@@ -4,10 +4,11 @@ Platform e-commerce produk lokal khas Malang Raya — souvenir, kuliner, kerajin
 
 ## Tech Stack
 
-- **Backend:** Laravel 11 (PHP)
+- **Backend:** Laravel 12 (PHP 8.2)
 - **Frontend:** Blade + Tailwind CSS
-- **Database:** SQLite (development)
+- **Database:** MySQL (production), SQLite (opsional lokal)
 - **Build tool:** Vite
+- **Deploy:** GitHub Actions → SSH/rsync → Hostinger
 
 ## Fitur
 
@@ -38,8 +39,12 @@ npm install
 cp .env.example .env
 php artisan key:generate
 
-# Buat database & jalankan migrasi + seeder
-touch database/database.sqlite
+# Buat database MySQL, lalu sesuaikan .env:
+# DB_DATABASE=laravel_malangan
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+# Jalankan migrasi + seeder
 php artisan migrate --seed
 
 # Build assets
@@ -65,6 +70,21 @@ Akses di: `http://localhost:8080`
 | Admin    | admin@malangan.com         | password   |
 | Customer | pelanggan@malangan.com     | password   |
 
+## Deploy
+
+Deploy otomatis via GitHub Actions setiap push ke branch `main`.
+
+Pipeline: build Composer & Vite → rsync ke Hostinger → `migrate --force` → cache config/route/view.
+
+**GitHub Secrets yang dibutuhkan:**
+
+| Secret            | Keterangan                  |
+|-------------------|-----------------------------|
+| `SSH_PRIVATE_KEY` | Private key SSH ke Hostinger |
+| `SSH_HOST`        | Hostname server              |
+| `SSH_PORT`        | Port SSH                     |
+| `SSH_USERNAME`    | Username Hostinger           |
+
 ## Design System
 
 - **Warna:** Navy `#1e3a5f`, Gold `#c8a96e`, Background `gray-50`
@@ -87,6 +107,8 @@ resources/views/
 ├── admin/              # Tampilan panel admin
 ├── layouts/            # Layout utama
 └── components/         # Komponen Blade reusable
+.github/workflows/
+└── deploy.yml          # CI/CD GitHub Actions
 ```
 
 ## Lisensi
